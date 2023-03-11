@@ -1,0 +1,64 @@
+.side-bar-box{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.category-box{
+  background-color: rgb(173, 173, 173);
+  padding: 0.5rem;
+  margin-bottom: 0.5rem;
+  border-radius: 0.5rem;
+  cursor: pointer;
+}
+.category-text{
+  font-weight: bold;
+  font-size: 1.6rem;
+}
+.category-active{
+  background-color:var(--color-accent);
+  color: white;
+  text-align: center;
+}
+.category-inactive{
+  text-align: center;
+}
+.leagues{
+  display: flex;
+  flex-direction: column;
+  transition: 0.3s;
+}
+.league-box{
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+  padding:1rem;
+  cursor: pointer;
+  border-radius: 5px;
+  font-size: 1.6rem;
+}
+.league-box:hover{
+  background-color: rgb(177, 177, 177);
+}
+.league-active{
+  background-color: rgb(124, 124, 124)
+}
+
+@media screen and (max-width: 1024px){
+  .category-text{
+    font-size: 1.4rem;
+  }
+  .league-box{
+    font-size: 1.4rem;
+    margin-bottom: 0.5rem;
+  }
+  
+}
+@media  screen and (max-width:767px) {
+  
+}
+@media screen and (max-width:480px){
+
+}
+
+
+

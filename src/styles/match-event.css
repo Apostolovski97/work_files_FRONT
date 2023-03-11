@@ -1,0 +1,179 @@
+.match-container{
+  margin: 0.5rem auto;
+}
+.match-events{
+  display: flex;
+  flex-direction: column;
+}
+.match-event{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color:var(--color-primary);
+  margin-bottom: 5px;
+  padding: 0.5rem;
+  border-radius: 10px;
+}
+.match-body{
+  border-bottom: 1px solid grey;
+}
+.match-teams{
+  display: flex;
+  flex-direction: column;
+  flex: 2;
+}
+.home-team, .away-team, .match-time{
+  display: flex;
+  align-items: center;
+  color: white;
+  font-size: 1.4rem;
+}
+.match-time{
+  margin-right: 5px;
+}
+.selection-tips{
+  gap: 0.5rem; 
+  flex: 1;
+  width: initial;
+}
+.tam{
+  display: none;
+}
+.btn{
+  background-color: grey;
+  padding: 0.5rem;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  flex: 1;
+  cursor: pointer;
+  min-width: 3.5rem;
+}
+.btn-active{
+  background-color: var(--color-accent);
+}
+.btn:disabled{
+  filter: brightness(50%);
+  cursor: auto;
+}
+.btn:hover:enabled{
+  filter: brightness(110%);
+}
+.btn:active:enabled{
+  filter: brightness(120%);
+}
+.result{
+  flex: 1;
+}
+.metar{
+  flex-direction: column;
+  position: relative;
+  padding: 0.2rem 0.5rem;
+  color: white;
+}
+.circular-progress{
+  position: relative;
+  width: 60px;
+  height: 60px;
+}
+.circular-progress svg {
+  position: relative;
+  width: 60px;
+  height: 60px;
+}
+.circular-progress svg circle{
+  fill: none;
+  stroke-width: 5;
+  transform: translate(83%, 18%) rotate(90deg);
+  stroke-dasharray:151;
+  stroke-dashoffset:151;
+}
+.circular-progress svg circle:nth-child(1){
+  stroke-dashoffset: 0;
+  stroke: rgb(211, 211, 211);
+}
+.progress-value{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  font-size: 1.4rem;
+  font-weight: bold;
+}
+.voted-result{
+  text-align: center;
+  padding: 0.5rem;
+  width: 8rem;
+}
+.voted-text{
+  color: white;
+  text-align: center;
+  font-size: 1.4rem;
+}
+.match-footer{
+  gap: 1rem;
+}
+.comments-box, .voted-box{
+  flex: 1;
+  background-color: var(--color-primary);
+  margin-top: 0.5rem;
+  border-radius: 10px;
+}
+.comments-box:hover, .voted-box:hover{
+  filter: brightness(130%);
+}
+.stat-title{
+  margin-right: 0.5rem;
+  color: white;
+  font-size: 1.4rem;
+}
+.stat-number{
+  color: white;
+  font-size: 1.4rem;
+}
+.league{
+  color: rgb(180, 180, 180);
+  margin-left: 50px;
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+.league:hover{
+  text-decoration: underline;
+}
+@media screen and (max-width: 1024px){
+  
+}
+@media  screen and (max-width:767px) {
+  .home-team, .away-team, .match-time{
+    font-size: 1.2rem;
+  }
+  .voted-text{
+    font-size: 1.2rem;
+  }
+  .progress-value{
+    font-size: 1.2rem;
+  }
+  .stat-title,.stat-number{
+    font-size: 1.2rem;
+  }
+  .voted-result{
+    width: 6rem;
+  }
+}
+@media screen and (max-width:400px){
+  .league{
+    font-size: 1rem;
+  }
+  .home-team, .away-team, .match-time{
+    font-size: 1.2rem;
+  }
+  .btn{
+    padding: 0.5rem;
+    min-width: 2.5rem;
+  }
+  .stat-title{
+    font-size: 1.2rem;
+  }
+}
+

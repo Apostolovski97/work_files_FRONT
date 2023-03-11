@@ -1,0 +1,90 @@
+.footer{
+  background-color: var(--color-primary);
+}
+.footer-container{
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  padding: 1rem 0.5rem;
+}
+.apps-box{
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1rem;
+  border-bottom: 1px solid grey;
+}
+.title{
+  color: white;
+  margin-bottom: 1rem;
+  font-weight: 700;
+  font-size: 1.8rem;
+}
+.icon-box{
+  margin-bottom: 5px;
+  width: fit-content;
+}
+.about-box{
+  margin-bottom: 1rem;
+  border-bottom: 1px solid grey;
+}
+.about-text{
+  color: white;
+  margin-bottom: 1rem;
+  font-size: 1.4rem;
+  line-height: 1.5;
+}
+.links-box{
+  margin-bottom: 1rem;
+  border-bottom: 1px solid grey;
+}
+.links{
+  margin-bottom: 1rem;
+}
+.link{
+  color: white;
+  text-decoration: none;
+  margin-right: 1rem;
+  font-size: 1.4rem;
+  
+}
+.link:hover{
+  text-decoration: underline;
+}
+.copyright-box{
+  display: flex;
+  justify-content: space-between;
+}
+.copyright-text{
+  color: white;
+  text-align: end;
+  font-size: 1.4rem;
+}
+@media screen and (max-width: 1024px){
+  
+}
+@media  screen and (max-width:767px) {
+  .title{
+    font-size: 1.6rem;
+  }
+  .about-text{
+    font-size: 1.2rem;
+  }
+  .link{
+    font-size: 1.2rem;
+  }
+  .copyright-text{
+    font-size: 1.2rem;
+  }
+}
+@media screen and (max-width:480px){
+  .about-text{
+    font-size: 1rem;
+  }
+  .link{
+    font-size: 1.2rem;
+  }
+  .copyright-box, .copyright-text{
+    font-size: 1.2rem;
+  }
+}
+

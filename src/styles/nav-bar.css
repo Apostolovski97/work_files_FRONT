@@ -1,0 +1,44 @@
+.nav-bar{
+  background-color: var(--color-primary);
+}
+.nav-container{
+  margin: 0 auto;
+}
+.nav-link{ 
+  display: flex;
+  align-items: center;
+  flex: 1;
+  padding: 1rem;
+  border-radius: 5px;
+  text-decoration: none;
+}
+.nav-text{
+  color: white;
+  font-size: 1.6rem;
+}
+.nav-link:hover{
+  background-color: #004d46;
+}
+.nav-link:active{
+  background-color: #005851;
+}
+.active{
+  background-color: #015049;
+}
+
+@media screen and (max-width: 1024px){
+  .nav-text{
+    font-size: 1.4rem;
+  }
+}
+@media  screen and (max-width:767px) {
+  .nav-text{
+    display: none;
+  }
+  .nav-link{
+    justify-content: center;
+  }
+}
+@media screen and (max-width:480px){
+
+}

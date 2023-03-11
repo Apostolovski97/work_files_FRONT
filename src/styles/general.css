@@ -1,0 +1,96 @@
+html{
+  font-size: 62.5%;
+}
+*,*::after,*::before{
+  box-sizing: border-box;
+}
+.ma{
+  margin: 0, auto;
+}
+/* Color Palette */
+:root{
+  --color-primary: #013d38;
+  --color-secondary:#d1d1d1;
+  --color-accent:#ff0000;
+}
+/* Flex */
+.flex-cc{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+/* Container */
+.container{
+  max-width: 1200px;
+}
+
+/* Typography */
+/* vidi za ::selection */
+body {
+  margin: 0;
+  font-family:'Roboto';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+h1{
+  margin: 1rem 0;
+  font-size: 2.5rem;
+}
+h2{
+  font-size: 1.8rem;
+  margin: 1rem 0;
+}
+p{
+  margin: 0;
+}
+
+/* Links */
+a{
+  text-decoration: none;
+}
+
+/* Icons */
+.icon-20{
+  width: 20px;
+  height: 20px;
+  margin: 0.4rem;
+}
+.icon-15{
+  width: 15px;
+  height: 15px;
+  margin: 0.4rem;
+}
+.icon-logo{
+  width: 200px;
+  height: 40px;
+}
+.icon-nav{
+  width: 25px;
+  height: 25px;
+  margin-right:1rem;
+}
+.icon-side-bar{
+  width: 20px;
+  height: 20px;
+  margin-right: 1rem;
+}
+.icon-app{
+  width: 100px;
+  height: 28px;
+  cursor: pointer;
+}
+
+/* MEDIA */
+@media screen and (max-width: 1024px){
+  
+}
+@media  screen and (max-width:767px) {
+  .icon-nav{
+    margin:0;
+  }
+}
+@media screen and (max-width:480px){
+
+}
+
+
