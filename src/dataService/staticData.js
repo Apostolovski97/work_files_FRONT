@@ -112,7 +112,7 @@ const tennisSideBar = [
     leagues: [
       { _id: '1', league: 'Australian Open', logo: '/logos/league/t-ao.webp', selected: false, },
       { _id: '2', league: 'French Open', logo: '/logos/league/t-fo.webp', selected: false, },
-      { _id: '3', league: 'Us Open', logo: '/logos/league/t-uo.webp', selected: false, },
+      { _id: '3', league: 'US Open', logo: '/logos/league/t-uo.webp', selected: false, },
       { _id: '4', league: 'Wimbledon', logo: '/logos/league/t-w.webp', selected: false, },
     ],
     selected: true,
@@ -333,7 +333,13 @@ const sortTips = {
     { _id: '1', tip: '1 2', selected: true },
     { _id: '2', tip: 'FT Under/Over ', selected: false },
     { _id: '3', tip: 'HT Under/Over ', selected: false },
+  ],
+  d: [
+    { _id: '1', tip: '1 X 2', selected: true },
+    { _id: '2', tip: 'FT Under/Over ', selected: false },
+    { _id: '3', tip: '1/3 Under/Over ', selected: false },
   ]
+
 }
 
 

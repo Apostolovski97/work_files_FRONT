@@ -60,7 +60,7 @@ class MatchEvent extends Component {
                     {this.renderTips(event).map((tip) => (
                       <button
                         disabled={
-                          time >= event.time ||
+                          (time >= event.time && event.date === today) ||
                           event.date === calendar2023[dIndex - 1].date
                             ? true
                             : false ||

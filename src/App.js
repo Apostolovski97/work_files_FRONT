@@ -56,7 +56,7 @@ class App extends Component {
     const routes = ['/football', '/basketball', '/tennis', '/hockey', '/handball', '/american-football'];
     return (
       <>
-        <Header dataHeader={dataHeader} value={searchQuery} onChange={this.handleSearch} />
+        <Header dataHeader={dataHeader} value={searchQuery} onChange={this.handleSearch} changeMain={this.changeMain} />
         <NavBar dataNavBar={dataNavBar} changeMain={this.changeMain} />
         <Routes>
           <Route path="*" element={<NotFound />} />
@@ -114,9 +114,9 @@ class App extends Component {
     //
     this.defaultHeading();
     //
-    this.changeLocalStorage();
+    this.defaultAllEvents();
   }
-  changeMain = async () => {
+  changeMain = () => {
     this.defaultEvents();
     //
     this.defaultSideBar();
@@ -128,6 +128,8 @@ class App extends Component {
     this.defaultAll();
     //
     this.defaultSearchQuery();
+    //
+    this.changeLocalStorage();
   };
   changeAll = () => {
     this.defaultEvents();
@@ -140,7 +142,7 @@ class App extends Component {
     //
     this.defaultAll();
   }
-  changeLeague = async (group, league) => {
+  changeLeague = (group, league) => {
     setTimeout(async () => {
       const pathName = window.location.pathname;
       const path = ['/football', '/basketball', '/tennis', '/hockey', '/handball', '/american-football'];
@@ -420,31 +422,22 @@ class App extends Component {
   }
   handleSearch = (query) => {
     const { allEvents } = this.state
-    const events = allEvents;
-    this.changeTimeDate(events);
+    const aEvents = allEvents;
+    const pathName = window.location.pathname;
+    const path = ['/football', '/basketball', '/tennis', '/hockey', '/handball', '/american-football'];
+    const index = path.indexOf(pathName);
+    const sport = ['football', 'basketball', 'tennis', 'hockey', 'handball', 'american-football'];
 
-    const uVotes = JSON.parse(window.localStorage.getItem('VOTED_EVENTS'))
-    if (uVotes === null) {
-    } else {
-      const countEvents = uVotes.length
-      for (let i = 0; i <= countEvents - 1; i++) {
-        const filtered = events.filter(e => e._id === uVotes[i]._id)
-        const tipsCountA = 3;
-        const tipsCountBC = 2;
-        for (let y = 0; y <= tipsCountA - 1; y++) {
-          filtered.map(e => e.tipsA[y].selected = uVotes[i].tipsA[y].selected)
-        }
-        for (let x = 0; x <= tipsCountBC - 1; x++) {
-          filtered.map(e => e.tipsB[x].selected = uVotes[i].tipsB[x].selected)
-          filtered.map(e => e.tipsC[x].selected = uVotes[i].tipsC[x].selected)
-        }
-      }
-    }
-
+    const events = aEvents.filter(e => e.sport === sport[index]);
     const filtered = events.filter(event =>
       event.homeTeam.toLowerCase().includes(query.toLowerCase()) ||
-      event.awayTeam.toLowerCase().includes(query.toLowerCase()))
-    this.setState({ dataEvents: filtered });
+      event.awayTeam.toLowerCase().includes(query.toLowerCase()));
+    if (query === "") {
+      this.defaultEvents();
+    } else {
+      this.setState({ dataEvents: filtered });
+    }
+
     const { dataSideBar } = this.state;
     dataSideBar.map(group => group.leagues.map(league => league.selected = false))
     //
@@ -455,7 +448,7 @@ class App extends Component {
     this.defaultSortTips();
     //
     this.setState({ searchQuery: query })
-
+    //
 
 
 
@@ -486,7 +479,7 @@ class App extends Component {
   }
 
   //RESUABLE --->
-  defaultEvents = async () => {
+  defaultEvents = () => {
     setTimeout(async () => {
       const pathName = window.location.pathname;
       const path = ['/football', '/basketball', '/tennis', '/hockey', '/handball', '/american-football'];
@@ -588,6 +581,12 @@ class App extends Component {
         sortTipsC[1].selected = false;
         sortTipsC[2].selected = false;
         this.setState({ dataSortTips: sortTipsC });
+      } else if (path[index] === '/hockey') {
+        const sortTipsD = defaultSortTips.d
+        sortTipsD[0].selected = true;
+        sortTipsD[1].selected = false;
+        sortTipsD[2].selected = false;
+        this.setState({ dataSortTips: sortTipsD });
       } else {
         const sortTipsA = defaultSortTips.a
         sortTipsA[0].selected = true;
@@ -620,7 +619,7 @@ class App extends Component {
     const dataHeading = getHeading();
     this.setState({ dataHeading });
   }
-  changeLocalStorage = async () => {
+  defaultAllEvents = async () => {
     const response = await axios.get(`${apiUrl}/allEvents`);
     response.data.map(e => e.tipsA = JSON.parse(e.tipsA))
     response.data.map(e => e.tipsB = JSON.parse(e.tipsB))
@@ -629,10 +628,32 @@ class App extends Component {
     response.data.map(e => e.voted = JSON.parse(e.voted))
     response.data.map(e => e.metar = JSON.parse(e.metar))
     response.data.map(e => e.resultText = JSON.parse(e.resultText))
-    const events = response.data
-
+    const events = response.data;
+    this.changeTimeDate(events);
+    const uVotes = JSON.parse(window.localStorage.getItem('VOTED_EVENTS'))
+    if (uVotes === null) {
+    } else {
+      const countEvents = uVotes.length
+      for (let i = 0; i <= countEvents - 1; i++) {
+        const filtered = events.filter(e => e._id === uVotes[i]._id)
+        const tipsCountA = 3;
+        const tipsCountBC = 2;
+        for (let y = 0; y <= tipsCountA - 1; y++) {
+          filtered.map(e => e.tipsA[y].selected = uVotes[i].tipsA[y].selected)
+        }
+        for (let x = 0; x <= tipsCountBC - 1; x++) {
+          filtered.map(e => e.tipsB[x].selected = uVotes[i].tipsB[x].selected)
+          filtered.map(e => e.tipsC[x].selected = uVotes[i].tipsC[x].selected)
+        }
+      }
+    }
+    this.setState({ allEvents: events })
+  }
+  changeLocalStorage = () => {
+    const { allEvents } = this.state
+    const events = allEvents;
     const localStorage = JSON.parse(window.localStorage.getItem('VOTED_EVENTS'))
-    let uVotes = [];
+    const uVotes = [];
     if (localStorage === null) {
       this.setState({ userVotes: uVotes })
     } else {
@@ -646,7 +667,6 @@ class App extends Component {
       }
       window.localStorage.setItem(`VOTED_EVENTS`, JSON.stringify(uVotes))
       this.setState({ userVotes: uVotes })
-      this.setState({ allEvents: events })
     }
   }
   updateInDb = async (dataEvents, eIndex) => {

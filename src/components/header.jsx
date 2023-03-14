@@ -3,13 +3,13 @@ import { Link } from "react-router-dom";
 
 class Header extends Component {
   render() {
-    const { dataHeader: icon, value, onChange } = this.props;
+    const { dataHeader: icon, value, onChange, changeMain } = this.props;
     return (
       <div className="header">
         <div className="container header-container">
           <div className="logo-box">
-            <Link to={"/"}>
-              <svg className="icon-logo"> 
+            <Link to={"/"} onClick={() => changeMain()}>
+              <svg className="icon-logo">
                 <use href={icon.logo}></use>
               </svg>
             </Link>
